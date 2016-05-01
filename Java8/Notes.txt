@@ -9,3 +9,36 @@ Double Colon Operator (::)
 Stream API
 Date And Time API
 	(etc...)
+
+====================================
+
+To invoke lambda expressions functionality, we have to use functional interface.
+
+=====================================
+
+Anonumous inner class vs Lambda Expression :
+--------------------------------------------
+//	make a table ........
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

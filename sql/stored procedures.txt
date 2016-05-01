@@ -1,0 +1,54 @@
+create table students(id int ,name varchar(25), fee float);
+
+delimiter $
+create procedure insertstudentinfo(id int, nm varchar(25), fee float)
+begin
+insert into students values(id, nm, fee);
+end;
+$ 
+
+
+-- --------------------------------
+delimiter $
+create procedure updateinfo(stid int, OUT nm varchar(25), INOUT inc float)
+begin
+update students set fee = (fee+inc) where id = stid;
+select name, fee into nm, inc from students where id = stid;
+end;
+$
+delimiter;
+
+-- --------------------------------
+
+create table hello(id int(3), a int(3), b int(3), sum int(5), sub int(5));
+insert into hello (id, a, b) values(101, 10, 20);
+insert into hello (id, a, b) values(102, 100, 50);
+insert into hello (id, a, b) values(103, 40, 20);
+-- --------------------------------
+
+delimiter $
+create procedure p1(in myid int, Out aa int, out bb int, OUT sum2 int, Out sub2 int)
+begin
+select a, b into aa, bb from hello where id = myid;
+sum2 := aa + bb;
+sub2 := aa-bb;
+update hello set sum = sum2, sub = sub2 where id = myid;
+end;
+$
+delimiter;
+
+-- ------------------------------------
+
+create procedure getallstudents()
+
+
+
+
+
+
+
+
+
+
+
+
