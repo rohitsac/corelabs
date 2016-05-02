@@ -73,11 +73,15 @@ class Misc{
 		// String ss = new String(ch.toString());
 
 
-	
+		// System.out.println(01);
+		// System.out.println(08);
 
+		// double[] d = {10, 20, 45, 53, 87};
+		// Double[] d = {10, 20, 45, 53, 87};
 
 
 	}
+
 
 	// public void callThis(){
 	// 	this = null;
