@@ -10,6 +10,8 @@ interface right{
 	}
 }
 
+/*
 public class Lab3 implements left, right{	// ambiguity problem
 
 }
+*/
