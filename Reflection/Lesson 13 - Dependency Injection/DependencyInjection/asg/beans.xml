@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean id="fileWriter" class="asg.FileWriter" />
+    <bean id="urlWriter" class="asg.URLWriter" />
+    <bean id="writerService" class="asg.WriterService">
+        <property name="writer" ref="fileWriter" />
+    </bean>
+</beans>
