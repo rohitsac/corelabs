@@ -1,0 +1,69 @@
+* Every annotation type implicitly inherits the java.lang.annotation.Annotation interface.
+
+* Restrictions on Annotation Types :
+
+	> An annotation type cannot inherit from another annotation type.
+			// Won't compile
+			public @interface WrongVersion extends BasicVersion {
+ 				int extended();
+			}
+	
+	> Method declarations in an annotation type cannot specify any parameters.
+			// Won't compile
+			public @interface WrongVersion {
+ 				// Cannot have parameters
+ 				String concatenate(int major, int minor);
+			}
+	
+	> Method declarations in an annotation type cannot have a throws clause.
+			// Won't compile
+			public @interface WrongVersion {
+ 				int major() throws Exception; // Cannot have a throws clause
+ 				int minor(); // OK
+			}
+	
+	> The return type of a method declared in an annotation type must be one of the following types:
+			•	 Any primitive type: byte, short, int, long, float, double, boolean, and char
+			•	 java.lang.String
+			•	 java.lang.Class
+			•	 An enum type
+			•	 An annotation type
+			•	 An array of any of the above mentioned type, for example, String[] , int[] , etc. The return type cannot be a nested array. For example, you cannot have a return type of String[][]  or int[][] .
+			
+	> An annotation type cannot declare a method, which would be equivalent to overriding a method in the Object class or the Annotation interface.
+	
+	> An annotation type cannot be generic.
+	
+	
+* All default values must be compile-time constants. and
+you cannot use null as the value for any type of element in an annotation.
+			public @interface DefaultTest {
+			 double d() default 12.89;
+			 int num() default 12;
+			 int[] x() default {1, 2};
+			 String s() default "Hello";
+			 String[] s2() default {"abc", "xyz"};
+			 Class c() default Exception.class;
+			 Class[] c2() default {Exception.class, java.io.IOException.class};
+			}
+			
+* The default value for an element is not compiled with the annotation. It is read from the annotation type
+definition when a program attempts to read the value of an element at runtime. For example, when you use
+@Version(major=2) , this annotation instance is compiled as is. It does not add minor element with its default value
+as zero. In other words, this annotation is not modified to @Version(major=2, minor=0)  at the time of compilation.
+However, when you read the value of the minor element for this annotation at runtime, Java will detect that the value
+for the minor element was not specified. It will consult the Version annotation type definition for its default value
+and return the default value. The implication of this mechanism is that if you change the default value of an element,
+the changed default value will be read whenever a program attempts to read it, even if the annotated program was
+compiled before you changed the default value.
+
+* The Java runtime implements the annotation type to a proxy class. It provides you with an object of a class that
+implements your annotation type for each annotation you use in your program. You must distinguish between an
+annotation type and instances (or objects) of that annotation type. In your example, Version is an annotation type.
+Whenever you use it as @Version(major=2, minor=4) , you are creating an instance of the Version annotation type.
+An instance of an annotation type is simply referred to as an annotation. For example, we say that @Version(major=2,
+minor=4)  is an annotation or an instance of the Version annotation type. An annotation should be easy to use in a
+program. The syntax @Version(...)  is shorthand for creating a class, creating an object of that class, and setting the
+values for its elements. 
+
+* 
