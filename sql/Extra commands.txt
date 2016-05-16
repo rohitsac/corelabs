@@ -1,0 +1,4 @@
+SHOW ENGINE INNODB STATUS\G
+show open tables where in_use>0;
+show processlist;
+show variables like 'innodb_lock_wait_timeout';
