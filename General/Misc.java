@@ -3,8 +3,7 @@ import java.util.*;
 
 class Misc{
 	public static void main(String[] args) throws Exception{
-		System.out.println(0.1*3 != 0.3);
-		System.out.println(0.1*3);
+		
 		// System.out.println(System.out);
 		// System.out.println(System.out.println("hello"));
 		// System.out.println(null);
@@ -80,6 +79,9 @@ class Misc{
 
 		// double[] d = {10, 20, 45, 53, 87};
 		// Double[] d = {10, 20, 45, 53, 87};
+
+		System.out.println(0.1*3 == 0.3);
+		System.out.println(0.1*3);
 
 
 	}
